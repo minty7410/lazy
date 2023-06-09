@@ -1,0 +1,52 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>WOW</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  
+
+  <!--[if IE]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>WOW.js</h1>
+    </header>
+    <div id="main">
+      <section class="wow animate__bounce" style="background-color: #f1c40f;"></section>
+      <section class="wow animate__pulse" style="background-color: #e74c3c;" data-wow-iteration="infinite" data-wow-duration="1500ms">data-wow-iteration：動畫的重複次數，infinite是輪播</section>
+      <section class="section--purple wow animate__fadeInLeft" data-wow-delay="1s"> data-wow-delay="1s"是延遲語法，s是秒</section>
+      <section class="section--blue wow animate__bounceInLeft" data-wow-offset="100">data-wow-offset：啟動動畫的距離(即偏移)（與瀏覽器底部相關）</section>
+      <section class="section--green wow animate__slideInLeft" data-wow-duration="2s">data-wow-duration：更改動畫持續時間</section>
+      <button id="moar">LOAD MOAR!!</button>
+    </div>
+  </div>
+	
+  <link rel="stylesheet" href="js/wow/wow.css">
+  <script src="js/wow/wow.js"></script>
+  <script>
+    wow = new WOW(
+      {
+        //抵達感應範圍後加入animate__animated
+        animateClass: 'animate__animated',
+        offset:       100,
+        callback:     function(box) {
+          console.log("WOW: animating <" + box.tagName.toLowerCase() + ">")
+        }
+      }
+    );
+    wow.init();
+    //增加更多DIV
+    document.getElementById('moar').onclick = function() {
+      var section = document.createElement('section');
+      section.className = 'section--purple wow animate__animated animate__fadeInDown';
+      this.parentNode.insertBefore(section, this);
+    };
+  </script>
+</body>
+</html>
